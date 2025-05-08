@@ -60,12 +60,12 @@ export default function Leaderboard({ username }: { username: string }) {
     <div className="max-w-3xl mx-auto space-y-6">
       <Card>
         <CardHeader>
-          <div className="flex items-center justify-between">
+          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
             <CardTitle className="flex items-center gap-2">
               <Trophy className="h-5 w-5 text-yellow-500" />
               Leaderboard
             </CardTitle>
-            <div className="flex items-center gap-2">
+            <div className="flex flex-wrap items-center gap-2">
               <Select value={gameMode} onValueChange={setGameMode as any}>
                 <SelectTrigger className="w-[120px]">
                   <SelectValue placeholder="Game Mode" />
@@ -113,7 +113,7 @@ export default function Leaderboard({ username }: { username: string }) {
             </div>
           ) : (
             <div className="space-y-4">
-              <div className="grid grid-cols-12 gap-4 py-2 font-medium">
+              <div className="hidden sm:grid sm:grid-cols-12 gap-4 py-2 font-medium">
                 <div className="col-span-1 text-center">#</div>
                 <div className="col-span-4">Player</div>
                 <div className="col-span-2 text-center">WPM</div>
@@ -127,28 +127,41 @@ export default function Leaderboard({ username }: { username: string }) {
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: index * 0.05 }}
-                  className={`grid grid-cols-12 gap-4 p-3 rounded-md ${
+                  className={`grid grid-cols-3 sm:grid-cols-12 gap-2 sm:gap-4 p-3 rounded-md ${
                     result.username === username ? "bg-muted" : "hover:bg-muted/50"
                   }`}
                 >
-                  <div className="col-span-1 flex justify-center items-center">
+                  <div className="flex justify-center items-center">
                     {index === 0 && <Trophy className="h-5 w-5 text-yellow-500" />}
                     {index === 1 && <Medal className="h-5 w-5 text-gray-400" />}
                     {index === 2 && <Medal className="h-5 w-5 text-amber-700" />}
                     {index > 2 && <span className="text-muted-foreground">{index + 1}</span>}
                   </div>
-                  <div className="col-span-4 flex items-center">
+                  <div className="col-span-2 sm:col-span-4 flex items-center">
                     <span className="truncate">{result.username || "Anonymous"}</span>
                     {result.username === username && (
-                      <Badge variant="outline" className="ml-2">
+                      <Badge variant="outline" className="ml-2 hidden sm:inline-flex">
                         You
                       </Badge>
                     )}
                   </div>
-                  <div className="col-span-2 text-center">{result.wpm.toFixed(1)}</div>
-                  <div className="col-span-2 text-center">{result.accuracy.toFixed(1)}%</div>
-                  <div className="col-span-3 text-center text-muted-foreground">
+                  <div className="hidden sm:block sm:col-span-2 text-center">{result.wpm.toFixed(1)}</div>
+                  <div className="hidden sm:block sm:col-span-2 text-center">{result.accuracy.toFixed(1)}%</div>
+                  <div className="hidden sm:block sm:col-span-3 text-center text-muted-foreground">
                     {new Date(result.timestamp).toLocaleDateString()}
+                  </div>
+
+                  {/* Mobile-only summary */}
+                  <div className="col-span-3 sm:hidden grid grid-cols-2 gap-2 text-sm mt-1">
+                    <div>
+                      WPM: <span className="font-medium">{result.wpm.toFixed(1)}</span>
+                    </div>
+                    <div>
+                      Acc: <span className="font-medium">{result.accuracy.toFixed(1)}%</span>
+                    </div>
+                    <div className="col-span-2 text-muted-foreground">
+                      {new Date(result.timestamp).toLocaleDateString()}
+                    </div>
                   </div>
                 </motion.div>
               ))}

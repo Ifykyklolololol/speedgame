@@ -137,7 +137,7 @@ export default function Achievements({ username }: { username: string }) {
           </CardDescription>
         </CardHeader>
         <CardContent>
-          <div className="grid gap-4 sm:grid-cols-2">
+          <div className="grid gap-4 grid-cols-1 sm:grid-cols-2">
             {achievements.map((achievement, index) => {
               const isUnlocked = achievement.condition(userResults)
               const progressValue = achievement.progress(userResults)
@@ -152,17 +152,17 @@ export default function Achievements({ username }: { username: string }) {
                 >
                   <Card className={`overflow-hidden ${isUnlocked ? "border-primary" : "border-muted"}`}>
                     <div className={`h-1 ${isUnlocked ? "bg-primary" : "bg-muted"}`} />
-                    <CardContent className="p-4">
-                      <div className="flex items-start gap-4">
-                        <div className={`p-2 rounded-full ${isUnlocked ? "bg-primary/10" : "bg-muted"}`}>
+                    <CardContent className="p-3 sm:p-4">
+                      <div className="flex items-start gap-3 sm:gap-4">
+                        <div className={`p-1.5 sm:p-2 rounded-full ${isUnlocked ? "bg-primary/10" : "bg-muted"}`}>
                           {achievement.icon}
                         </div>
                         <div className="flex-1 space-y-1">
                           <div className="flex items-center justify-between">
-                            <h3 className="font-medium">{achievement.name}</h3>
+                            <h3 className="font-medium text-sm sm:text-base">{achievement.name}</h3>
                             {isUnlocked && <Trophy className="h-4 w-4 text-yellow-500" />}
                           </div>
-                          <p className="text-sm text-muted-foreground">{achievement.description}</p>
+                          <p className="text-xs sm:text-sm text-muted-foreground">{achievement.description}</p>
                           <div className="pt-2">
                             <Progress value={progressPercent} className="h-2" />
                             <div className="flex justify-between mt-1 text-xs text-muted-foreground">

@@ -21,6 +21,15 @@ export default function GameLayout() {
   useEffect(() => {
     setMounted(true)
 
+    // Ensure proper viewport settings for mobile
+    const viewportMeta = document.querySelector('meta[name="viewport"]')
+    if (!viewportMeta) {
+      const meta = document.createElement("meta")
+      meta.name = "viewport"
+      meta.content = "width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
+      document.head.appendChild(meta)
+    }
+
     const storedUsername = localStorage.getItem("typeracer-username")
     if (storedUsername) {
       setUsername(JSON.parse(storedUsername))
@@ -61,23 +70,23 @@ export default function GameLayout() {
       <main className="flex-1 container py-6">
         <Tabs value={activeTab} onValueChange={setActiveTab} className="space-y-4">
           <TabsList className="grid grid-cols-5 w-full max-w-3xl mx-auto">
-            <TabsTrigger value="game" className="flex items-center gap-2">
+            <TabsTrigger value="game" className="flex items-center justify-center gap-1 px-1 sm:px-3">
               <Flame className="h-4 w-4" />
               <span className="hidden sm:inline">Game</span>
             </TabsTrigger>
-            <TabsTrigger value="leaderboard" className="flex items-center gap-2">
+            <TabsTrigger value="leaderboard" className="flex items-center justify-center gap-1 px-1 sm:px-3">
               <Trophy className="h-4 w-4" />
               <span className="hidden sm:inline">Leaderboard</span>
             </TabsTrigger>
-            <TabsTrigger value="achievements" className="flex items-center gap-2">
+            <TabsTrigger value="achievements" className="flex items-center justify-center gap-1 px-1 sm:px-3">
               <Medal className="h-4 w-4" />
               <span className="hidden sm:inline">Achievements</span>
             </TabsTrigger>
-            <TabsTrigger value="stats" className="flex items-center gap-2">
+            <TabsTrigger value="stats" className="flex items-center justify-center gap-1 px-1 sm:px-3">
               <BarChart3 className="h-4 w-4" />
               <span className="hidden sm:inline">Stats</span>
             </TabsTrigger>
-            <TabsTrigger value="customize" className="flex items-center gap-2">
+            <TabsTrigger value="customize" className="flex items-center justify-center gap-1 px-1 sm:px-3">
               <Settings className="h-4 w-4" />
               <span className="hidden sm:inline">Customize</span>
             </TabsTrigger>

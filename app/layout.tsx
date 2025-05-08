@@ -6,9 +6,11 @@ import { ThemeProvider } from "@/components/theme-provider"
 
 const inter = Inter({ subsets: ["latin"] })
 
+// Add viewport meta tag to ensure proper scaling on mobile devices
 export const metadata: Metadata = {
   title: "Relix Type Racer",
   description: "Type Racer Made By RelixEnd NO AI ALL BRAIN POWER",
+  viewport: "width=device-width, initial-scale=1, maximum-scale=1",
     generator: 'v0.dev'
 }
 
@@ -27,6 +29,3 @@ export default function RootLayout({
     </html>
   )
 }
-
-
-import './globals.css'

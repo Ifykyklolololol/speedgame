@@ -186,9 +186,9 @@ export default function GameArea({ username }: { username: string }) {
     <div className="max-w-3xl mx-auto space-y-6">
       <Card>
         <CardHeader>
-          <div className="flex items-center justify-between">
+          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
             <CardTitle>Relix Type Racer</CardTitle>
-            <div className="flex items-center gap-2">
+            <div className="flex flex-wrap items-center gap-2">
               <Select value={difficulty} onValueChange={setDifficulty}>
                 <SelectTrigger className="w-[120px]">
                   <SelectValue placeholder="Difficulty" />
@@ -319,7 +319,7 @@ export default function GameArea({ username }: { username: string }) {
                 </p>
               </div>
 
-              <div className="grid grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div className="bg-muted p-4 rounded-lg text-center">
                   <div className="text-3xl font-bold">{wpm}</div>
                   <div className="text-sm text-muted-foreground">Words Per Minute</div>

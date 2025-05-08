@@ -109,12 +109,12 @@ export default function StatsTracker({ username }: { username: string }) {
     <div className="max-w-3xl mx-auto space-y-6">
       <Card>
         <CardHeader>
-          <div className="flex items-center justify-between">
+          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
             <CardTitle className="flex items-center gap-2">
               <BarChart3 className="h-5 w-5" />
               Stats Tracker
             </CardTitle>
-            <div className="flex items-center gap-2">
+            <div className="flex flex-wrap items-center gap-2">
               <Select value={gameMode} onValueChange={setGameMode as any}>
                 <SelectTrigger className="w-[120px]">
                   <SelectValue placeholder="Game Mode" />
@@ -149,35 +149,35 @@ export default function StatsTracker({ username }: { username: string }) {
             </div>
           ) : (
             <>
-              <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
+              <div className="grid grid-cols-2 gap-4">
                 <Card>
                   <CardContent className="p-4 flex flex-col items-center justify-center">
                     <Zap className="h-5 w-5 text-yellow-500 mb-2" />
-                    <div className="text-2xl font-bold">{averageWpm}</div>
-                    <div className="text-sm text-muted-foreground">Avg. WPM</div>
+                    <div className="text-xl sm:text-2xl font-bold">{averageWpm}</div>
+                    <div className="text-xs sm:text-sm text-muted-foreground">Avg. WPM</div>
                   </CardContent>
                 </Card>
                 <Card>
                   <CardContent className="p-4 flex flex-col items-center justify-center">
                     <Zap className="h-5 w-5 text-orange-500 mb-2" />
-                    <div className="text-2xl font-bold">{maxWpm}</div>
-                    <div className="text-sm text-muted-foreground">Max WPM</div>
+                    <div className="text-xl sm:text-2xl font-bold">{maxWpm}</div>
+                    <div className="text-xs sm:text-sm text-muted-foreground">Max WPM</div>
                   </CardContent>
                 </Card>
                 <Card>
                   <CardContent className="p-4 flex flex-col items-center justify-center">
                     <CheckCircle className="h-5 w-5 text-green-500 mb-2" />
-                    <div className="text-2xl font-bold">{averageAccuracy}%</div>
-                    <div className="text-sm text-muted-foreground">Avg. Accuracy</div>
+                    <div className="text-xl sm:text-2xl font-bold">{averageAccuracy}%</div>
+                    <div className="text-xs sm:text-sm text-muted-foreground">Avg. Accuracy</div>
                   </CardContent>
                 </Card>
                 <Card>
                   <CardContent className="p-4 flex flex-col items-center justify-center">
                     <Clock className="h-5 w-5 text-blue-500 mb-2" />
-                    <div className="text-2xl font-bold">
+                    <div className="text-xl sm:text-2xl font-bold">
                       {completedGames}/{totalGames}
                     </div>
-                    <div className="text-sm text-muted-foreground">Completed Games</div>
+                    <div className="text-xs sm:text-sm text-muted-foreground">Completed Games</div>
                   </CardContent>
                 </Card>
               </div>

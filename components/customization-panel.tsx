@@ -126,11 +126,11 @@ export default function CustomizationPanel() {
                     <Button
                       key={t}
                       variant={theme === t ? "default" : "outline"}
-                      className="flex flex-col items-center justify-center h-24 gap-2"
+                      className="flex flex-col items-center justify-center h-16 sm:h-24 gap-1 sm:gap-2 px-1 sm:px-3"
                       onClick={() => setTheme(t)}
                     >
                       <div
-                        className={`w-12 h-12 rounded-full flex items-center justify-center ${
+                        className={`w-8 h-8 sm:w-12 sm:h-12 rounded-full flex items-center justify-center ${
                           t === "light"
                             ? "bg-white border"
                             : t === "dark"
@@ -138,11 +138,11 @@ export default function CustomizationPanel() {
                               : "bg-gradient-to-r from-white to-slate-900"
                         }`}
                       >
-                        {t === "light" && <span className="text-black text-xl">☀️</span>}
-                        {t === "dark" && <span className="text-white text-xl">🌙</span>}
-                        {t === "system" && <span className="text-xl">⚙️</span>}
+                        {t === "light" && <span className="text-black text-base sm:text-xl">☀️</span>}
+                        {t === "dark" && <span className="text-white text-base sm:text-xl">🌙</span>}
+                        {t === "system" && <span className="text-base sm:text-xl">⚙️</span>}
                       </div>
-                      <span className="capitalize">{t}</span>
+                      <span className="capitalize text-xs sm:text-base">{t}</span>
                     </Button>
                   ))}
                 </div>
@@ -154,14 +154,14 @@ export default function CustomizationPanel() {
                   {colors.map((color) => (
                     <button
                       key={color.name}
-                      className={`w-full h-12 rounded-md flex items-center justify-center ${
+                      className={`w-full h-10 sm:h-12 rounded-md flex items-center justify-center ${
                         accentColor === color.name ? "ring-2 ring-offset-2 ring-offset-background" : ""
                       }`}
                       style={{ backgroundColor: color.value }}
                       onClick={() => handleColorChange(color.name)}
                       aria-label={`Set accent color to ${color.name}`}
                     >
-                      {accentColor === color.name && <Paintbrush className="h-5 w-5 text-white" />}
+                      {accentColor === color.name && <Paintbrush className="h-4 w-4 sm:h-5 sm:w-5 text-white" />}
                     </button>
                   ))}
                 </div>
